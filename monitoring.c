@@ -6,7 +6,7 @@
 /*   By: ibaaziz <ibaaziz@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/28 12:36:57 by ibaaziz           #+#    #+#             */
-/*   Updated: 2025/06/17 15:22:47 by ibaaziz          ###   ########.fr       */
+/*   Updated: 2025/06/17 16:27:01 by ibaaziz          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,7 +69,7 @@ void	monitoring(t_philosopher *philo)
 	int	a;
 
 	a = 0;
-	eaten = malloc(philo->param->philo_num * sizeof(int));
+	eaten = malloc(philo->param->philo_num * sizeof(int)); // CHECk malloc fail et bug helgrind quand eatcon
 	fill_array(eaten, philo->param->philo_num);
 	usleep(100);
 	while (!check_array(eaten, philo->param->philo_num))
