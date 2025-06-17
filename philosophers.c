@@ -23,6 +23,7 @@ void	join_threads(t_philosopher *philo)
 		i++;
 		philo = philo->next;
 	}
+	//FAIS MAKEFILE
 }
 
 void	destroy_mutex(t_philosopher *philo)
