@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   routine.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ibtihal <ibtihal@student.42.fr>            +#+  +:+       +#+        */
+/*   By: ibaaziz <ibaaziz@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/31 14:41:51 by ibaaziz           #+#    #+#             */
-/*   Updated: 2025/06/13 09:08:41 by ibtihal          ###   ########.fr       */
+/*   Updated: 2025/06/18 11:53:31 by ibaaziz          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,8 @@ void	*odd(void *ph)
 	d = 0;
 	pthread_mutex_lock(&philo->param->m_start);
 	pthread_mutex_unlock(&philo->param->m_start);
+	if (!philo->param->tto_eat)
+		return (NULL);
 	while (!d)
 	{
 		eating(philo, &d);
@@ -39,6 +41,8 @@ void	*even(void *ph)
 	d = 0;
 	pthread_mutex_lock(&philo->param->m_start);
 	pthread_mutex_unlock(&philo->param->m_start);
+	if (!philo->param->tto_eat)
+		return (NULL);
 	while (!d)
 	{
 		sleeping(philo, &d);

@@ -6,7 +6,7 @@
 /*   By: ibaaziz <ibaaziz@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/28 12:36:57 by ibaaziz           #+#    #+#             */
-/*   Updated: 2025/06/17 16:27:01 by ibaaziz          ###   ########.fr       */
+/*   Updated: 2025/06/18 12:32:25 by ibaaziz          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,16 +26,24 @@ int	check_array(int *eaten, int nb)
 	return (1);
 }
 
-void	fill_array(int *arr, int nb)
+int	fill_array(int **arr, t_philosopher *philo)
 {
 	int	i;
 
 	i = 0;
-	while (i < nb)
+	*arr = malloc(philo->param->philo_num * sizeof(int));
+	if (!*arr)
 	{
-		arr[i] = 0;
+		printf("failed malloc\n");
+		philo->param->tto_eat = 0;
+		return (0);
+	}
+	while (i < philo->param->philo_num)
+	{
+		(*arr)[i] = 0;
 		i++;
 	}
+	return (1);
 }
 
 void	check_death(int a, t_philosopher *philo)
@@ -47,6 +55,7 @@ void	check_death(int a, t_philosopher *philo)
 	}
 	else
 	{
+		pthread_mutex_lock(&philo->param->global);
 		philo->param->die = 1;
 		pthread_mutex_unlock(&philo->param->global);
 	}
@@ -63,14 +72,15 @@ void	check_nb_eat(t_philosopher *philo, int *eaten)
 	}
 }
 
-void	monitoring(t_philosopher *philo)
+int	monitoring(t_philosopher *philo)
 {
 	int	*eaten;
 	int	a;
 
 	a = 0;
-	eaten = malloc(philo->param->philo_num * sizeof(int)); // CHECk malloc fail et bug helgrind quand eatcon
-	fill_array(eaten, philo->param->philo_num);
+	if (!fill_array(&eaten, philo))
+		return (pthread_mutex_unlock(&philo->param->m_start));
+	pthread_mutex_unlock(&philo->param->m_start);
 	usleep(100);
 	while (!check_array(eaten, philo->param->philo_num))
 	{
@@ -88,5 +98,5 @@ void	monitoring(t_philosopher *philo)
 	}
 	check_death(a, philo);
 	free(eaten);
-	return ;
+	return (1);
 }

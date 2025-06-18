@@ -6,7 +6,7 @@
 /*   By: ibaaziz <ibaaziz@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/12 18:34:07 by ibaaziz           #+#    #+#             */
-/*   Updated: 2025/06/17 15:23:22 by ibaaziz          ###   ########.fr       */
+/*   Updated: 2025/06/18 12:28:27 by ibaaziz          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,7 +75,6 @@ int	main(int av, char **ac)
 	pthread_mutex_lock(&first->param->m_start);
 	init_thread(first);
 	first->param->start = getms();
-	pthread_mutex_unlock(&first->param->m_start);
 	monitoring(first);
 	join_threads(first);
 	destroy_mutex(first);

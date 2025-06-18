@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   philosophers.h                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ibtihal <ibtihal@student.42.fr>            +#+  +:+       +#+        */
+/*   By: ibaaziz <ibaaziz@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/12 18:34:00 by ibaaziz           #+#    #+#             */
-/*   Updated: 2025/06/13 11:34:21 by ibtihal          ###   ########.fr       */
+/*   Updated: 2025/06/18 11:33:54 by ibaaziz          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,6 +52,7 @@ typedef struct philosopher
 
 int				ft_atoi(char *str, int *n);
 void			free_all(t_philosopher *philo);
+void			join_threads(t_philosopher *philo);
 t_philosopher	*ft_lst_add_philo(t_philosopher *philo, t_parameters *param);
 t_philosopher	*init_philo(t_parameters *para);
 int				init_param(t_parameters *param, char **ac);
@@ -60,7 +61,7 @@ void			*even(void *p);
 void			*odd(void *p);
 long			getms(void);
 long			gettime(t_philosopher *philo);
-void			monitoring(t_philosopher *philo);
+int				monitoring(t_philosopher *philo);
 void			sleeping(t_philosopher *philo, int *d);
 void			eating(t_philosopher *philo, int *d);
 void			thinking(t_philosopher *philo, int *d);
