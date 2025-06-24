@@ -6,7 +6,7 @@
 /*   By: ibaaziz <ibaaziz@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/12 18:34:07 by ibaaziz           #+#    #+#             */
-/*   Updated: 2025/06/18 12:28:27 by ibaaziz          ###   ########.fr       */
+/*   Updated: 2025/06/24 10:37:05 by ibaaziz          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,6 @@ void	join_threads(t_philosopher *philo)
 		i++;
 		philo = philo->next;
 	}
-	//FAIS MAKEFILE
 }
 
 void	destroy_mutex(t_philosopher *philo)
