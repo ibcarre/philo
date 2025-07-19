@@ -1,7 +1,5 @@
 NAME = philo
 
-INC = philosophers.h
-
 SRC = actions.c\
 	actions2.c\
 	ft_atoi.c\
@@ -11,7 +9,7 @@ SRC = actions.c\
 	routine.c\
 	utils.c\
 
-FLAGS += -Werror -Wextra -Wall -I $(INC) -g
+FLAGS += -Werror -Wextra -Wall -g
 
 OBJ = $(SRC:.c=.o)
 

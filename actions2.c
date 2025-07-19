@@ -37,4 +37,5 @@ void	thinking(t_philosopher *philo, int *d)
 	}
 	printf("%li %i is thinking\n", gettime(philo), philo->id);
 	pthread_mutex_unlock(&philo->param->global);
+	usleep(200);
 }

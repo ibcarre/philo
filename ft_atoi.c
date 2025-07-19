@@ -21,8 +21,8 @@ int	is_num(char c)
 
 int	ft_atoi(char *str, int *n)
 {
-	long	nb;
-	int		i;
+	int	nb;
+	int	i;
 
 	i = 0;
 	nb = 0;
@@ -32,7 +32,7 @@ int	ft_atoi(char *str, int *n)
 	{
 		nb = nb * 10 + (str[i] - '0');
 		i++;
-		if (nb < 0)
+		if (nb <= 0)
 			return (0);
 	}
 	if (str[i])
@@ -42,3 +42,5 @@ int	ft_atoi(char *str, int *n)
 		return (0);
 	return (1);
 }
+
+//429496729644454

@@ -60,6 +60,8 @@ t_philosopher	*ft_lst_add_philo(t_philosopher *philo, t_parameters *param)
 	t_philosopher	*next;
 
 	next = malloc(sizeof(t_philosopher));
+	if (!next)
+		return (NULL);
 	philo->next = next;
 	next->nb_eaten = 0;
 	next->param = param;
